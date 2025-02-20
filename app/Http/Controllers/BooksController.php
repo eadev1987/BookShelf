@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Books;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 
 class BooksController extends Controller
 {
@@ -12,56 +13,16 @@ class BooksController extends Controller
      */
     public function index()
     {
-       $books = Books::all();
+        $now = Carbon::now()->locale('lv_LV')->setTimezone('Europe/Riga');
+        $last_two_hours = Carbon::now()->subHours(2)->locale('lv_LV')->setTimezone('Europe/Riga');
+
+        $books = Books::withCount('purchases')->orderBy('purchases_count', 'desc')->get();
+        foreach ($books as $book) {
+           $book->recently_purchased = $book->purchases->where('created_at', '>', $last_two_hours)->count();
+           $book->all_purchase_count = $book->purchases->count();
+        }
+
 
        return view('welcome', compact('books'));
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(Books $books)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Books $books)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Books $books)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Books $books)
-    {
-        //
     }
 }

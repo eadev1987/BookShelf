@@ -5,3 +5,7 @@
 .bottom-info {
     width: 100% !important;
 }
+.card-header {
+    position: absolute;
+    width: 100%;
+}
