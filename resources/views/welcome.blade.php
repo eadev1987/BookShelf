@@ -28,7 +28,7 @@
                 </div>
             </div>
             <div class="row mb-3">
-                <div class="col-md-4 offset-md-4">
+                <div class="col-md-3 offset-1">
                     <label class="visually-hidden" for="search">Meklēšana</label>
                     <div class="input-group">
                         <div class="input-group-text">
@@ -38,6 +38,16 @@
                         </div>
                         <input id="filter" type="search" class="form-control">
                     </div>
+                </div>
+                <div class="col-md-2 offset-5">
+                    <label class="visually-hidden" for="search">Sort</label>
+                    <form action="/" method="get" id="sorting_form">
+                        <select class="form-select" name="sort" id="sorting_select" aria-label="Default select example">
+                            <option value="">------</option>
+                            <option value="popularity">Sort By: Popularity (This month)</option>
+                            <option value="title">Sort By: Title (ASC)</option>
+                        </select>
+                    </form>
                 </div>
             </div>
             <div class="row align-items-center mt-5 px-5">
@@ -56,7 +66,7 @@
                                 <p class="card-text">{{$book->author}}</p>
                                 <div class="row position-absolute bottom-0 bottom-info">
                                     <div class="col-6"><p class="card-text">Price: {{$book->price}} EUR</p></div>
-                                    <div class="col-6"><p class="card-text">Sold ({{$book->all_purchase_count}}) copies</p></div>
+                                    <div class="col-6"><p class="card-text">Sold (<strong>{{$book->all_purchase_count}}</strong>) copies</p></div>
                                 </div>
                             </div>
                             <div class="card-footer">
