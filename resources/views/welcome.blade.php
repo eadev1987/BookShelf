@@ -26,7 +26,7 @@
                 <div class="col-3 my-auto">
                     <h1 class="title"> Bookshelf</h1>
                 </div>
-                <div class="col-2 my-auto">
+                <div class="col-auto py-2 my-auto">
                     <label class="visually-hidden" for="search">Meklēšana</label>
                     <div class="input-group">
                         <div class="input-group-text">
@@ -37,7 +37,7 @@
                         <input id="filter" type="search" class="form-control">
                     </div>
                 </div>
-                <div class="col-2 my-auto">
+                <div class="col-auto my-auto">
 
                     <label class="visually-hidden" for="search">Sort</label>
                     <form action="/" method="get" id="sorting_form">
@@ -59,11 +59,11 @@
                 </div>
             </div>
 
-            <div class="row align-items-center mt-5 px-5">
+            <div class="row mx-auto mt-5">
                 @foreach ($books as $book)
 
-                <div class="col-3 mt-3 searchable">
-                    <div class="card" style="width: 25rem; height: 40rem;">
+                <div class="col-auto mt-3 searchable">
+                    <div class="card" style="width: 22rem; height: 40rem;">
                         @if ($book->recently_purchased > 0)
                             <div class="card-header">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="yellow" class="bi bi-star-fill mb-1" viewBox="0 0 16 16">
